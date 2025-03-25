@@ -4,10 +4,10 @@ module.exports = withModuleFederationPlugin({
 
   name: 'angular-mf-app', //Nombre de la Aplicación en Module Federation
 
-  remotes: { //Define los microfrontends
-    authApp: "http://127.0.0.1:4201/remoteEntry.js",
-    resumeEditorApp: "http://127.0.0.1:4202/remoteEntry.js",
-    templatesApp: "http://127.0.0.1:4203/remoteEntry.js",
+  remotes: {
+    authApp: 'authApp@http://localhost:4201/remoteEntry.js',
+    resumeEditorApp: 'resumeEditorApp@http://localhost:4202/remoteEntry.js',
+    templatesApp: 'templatesApp@http://localhost:4203/remoteEntry.js',
   },
 
   shared: { //comparte dependencias entre el Host y los Remotes , evitando que cada Remote cargue Angular duplicado
@@ -16,5 +16,6 @@ module.exports = withModuleFederationPlugin({
       strictVersion: true,
       requiredVersion: 'auto' }),
   },
+  library: { type: 'module' } //Asegura que usa modulos correctamente
 
 });
